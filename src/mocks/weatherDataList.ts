@@ -13,7 +13,9 @@ export const weatherDataList = [
     },
     extraButton: {
       title: "ADICIONAR",
-      onPress: () => {}
+      onPress: () => {
+        console.log("Puft!");
+      }
     }
   }
 ]

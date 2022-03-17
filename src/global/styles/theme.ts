@@ -9,6 +9,7 @@ export default  {
     background: "#fafafa",
 
     shape: "#ffffff",
+    shape_light: "#f5f5f5",
     title: "#000000",
     text: "rgba(0, 0, 0, 0.6)",
   },
