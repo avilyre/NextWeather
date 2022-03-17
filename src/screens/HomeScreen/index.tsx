@@ -1,6 +1,7 @@
 import React from "react";
 import { WeatherCard } from "../../components/WeatherCard";
-import { weatherList } from "../../mocks/weatherList";
+import { weatherDataList } from "../../mocks/weatherDataList";
+import { EmptyState } from "./components/EmptyState";
 
 import {
   Container,
@@ -8,7 +9,7 @@ import {
   Title,
   SearchButton,
   Icon,
-  WeatherCards
+  WeatherList
 } from "./styles";
 
 export function HomeScreen(): JSX.Element {
@@ -25,25 +26,31 @@ export function HomeScreen(): JSX.Element {
         </SearchButton>
       </Header>
 
-      <WeatherCards
-        data={weatherList}
-        renderItem={({ item }) => (
-          <WeatherCard
-            city={item.city}
-            country={item.country}
-            temperature={{
-              highlight: item.temperature.highlight,
-              details: {
-                weather: item.temperature.details.weather,
-                min: item.temperature.details.min,
-                max: item.temperature.details.max
-              }
-            }}
-            onPress={handleWeatherCard}
-            extraButton={item.extraButton}
+      {weatherDataList
+        ?
+        (
+          <WeatherList
+            data={weatherDataList}
+            renderItem={({ item }) => (
+              <WeatherCard
+                city={item.city}
+                country={item.country}
+                temperature={{
+                  highlight: item.temperature.highlight,
+                  details: {
+                    weather: item.temperature.details.weather,
+                    min: item.temperature.details.min,
+                    max: item.temperature.details.max
+                  }
+                }}
+                onPress={handleWeatherCard}
+                extraButton={item.extraButton}
+              />
+            )}
           />
-        )}
-      />
+        )
+        : <EmptyState />
+      }
     </Container>
   );
 }

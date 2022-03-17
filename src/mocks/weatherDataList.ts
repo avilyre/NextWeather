@@ -1,5 +1,6 @@
-export const weatherList = [
+export const weatherDataList = [
   {
+    id: "1",
     city: "Cortês",
     country: "Brasil",
     temperature: {

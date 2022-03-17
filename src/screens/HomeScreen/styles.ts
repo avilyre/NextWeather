@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { Feather,  } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import { FlatList, FlatListProps } from "react-native";
-import { WeatherCardProps } from "../../components/WeatherCard/interface";
+import { WeatherListProps } from "./interface";
 
 export const Container = styled.View`
   flex: 1;
@@ -35,10 +35,10 @@ export const Icon = styled(Feather)`
   color: ${({ theme }) => theme.colors.shape};
 `;
 
-export const WeatherCards = styled(
+export const WeatherList = styled(
   FlatList as new (
-    props: FlatListProps<WeatherCardProps>
-  ) => FlatList<WeatherCardProps>
+    props: FlatListProps<WeatherListProps>
+  ) => FlatList<WeatherListProps>
 )`
   padding: 16px;
 `;
