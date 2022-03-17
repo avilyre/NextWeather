@@ -1,6 +1,6 @@
 import React from "react";
 import { WeatherList } from "../WeatherList";
-import { EmptyState } from "./EmptyState";
+import { EmptyState } from "./components/EmptyState";
 import { SearchModalProps } from "./interface";
 
 import {
