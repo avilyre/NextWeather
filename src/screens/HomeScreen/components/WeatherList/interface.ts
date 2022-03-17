@@ -1,4 +1,3 @@
-import { TouchableOpacityProps } from "react-native";
 import { WeatherCardProps } from "../../../../components/WeatherCard/interface";
 
 export interface WeatherListDataProps extends WeatherCardProps {

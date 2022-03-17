@@ -1,5 +1,6 @@
 import React from "react";
 import { WeatherCard } from "../../../../components/WeatherCard";
+import { WeatherListItem } from "../WeatherListItem";
 import { WeatherListProps } from "./interface";
 
 import { Container } from "./styles";
@@ -12,21 +13,9 @@ export function WeatherList({
     <Container
       data={data}
       renderItem={({ item }) => (
-        <WeatherCard
-          city={item.city}
-          country={item.country}
-          temperature={{
-            highlight: item.temperature.highlight,
-            details: {
-              weather: item.temperature.details.weather,
-              min: item.temperature.details.min,
-              max: item.temperature.details.max
-            }
-          }}
-          onPress={onPressItem}
-          extraButton={item.extraButton}
-        />
-      )}
+          <WeatherListItem {...item} onPressItem={onPressItem} />
+        )
+      }
     />
   );
 }
