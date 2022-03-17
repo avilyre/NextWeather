@@ -11,4 +11,8 @@ export interface WeatherCardProps extends TouchableOpacityProps {
       max: string;
     }
   }
+  extraButton?: {
+    title: string;
+    onPress(): void;
+  }
 }

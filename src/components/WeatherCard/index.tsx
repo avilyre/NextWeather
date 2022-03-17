@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "./components/Button";
 import { WeatherCardProps } from "./interface";
 
 import {
@@ -18,6 +19,7 @@ export function WeatherCard({
   city,
   country,
   temperature = {},
+  extraButton,
   onPress,
   ...rest
 }: WeatherCardProps): JSX.Element {
@@ -47,6 +49,12 @@ export function WeatherCard({
               {`${temperature.details.min} - ${temperature.details.max}`}
             </MinMax>
           </Details>
+        )}
+        {extraButton && (
+          <Button
+            title={extraButton.title}
+            onPress={extraButton.onPress}
+          />
         )}
       </Footer>
     </Container>

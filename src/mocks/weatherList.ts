@@ -9,6 +9,10 @@ export const weatherList = [
         min: "12°",
         max: "22°"
       }
+    },
+    extraButton: {
+      title: "ADICIONAR",
+      onPress: () => {}
     }
   }
 ]

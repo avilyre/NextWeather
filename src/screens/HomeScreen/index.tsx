@@ -40,6 +40,7 @@ export function HomeScreen(): JSX.Element {
               }
             }}
             onPress={handleWeatherCard}
+            extraButton={item.extraButton}
           />
         )}
       />
