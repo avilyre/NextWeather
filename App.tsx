@@ -12,7 +12,6 @@ import { HomeScreen, } from './src/screens/HomeScreen';
 import AppLoading from 'expo-app-loading';
 import { ScreenContainer } from './src/components/ScreenContainer';
 import { StatusBar } from 'expo-status-bar';
-import { SearchModal } from './src/screens/HomeScreen/components/SearchModal';
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
@@ -32,7 +31,6 @@ export default function App(): JSX.Element {
           backgroundColor={theme.colors.primary}
         />
         <HomeScreen />
-        {/* <SearchModal /> */}
       </ScreenContainer>
     </ThemeProvider>
   );
