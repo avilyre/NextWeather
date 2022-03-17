@@ -1,4 +1,5 @@
 import React from "react";
+import { WeatherCard } from "../../components/WeatherCard";
 
 import { EmptyState } from "./components/EmptyState";
 
@@ -8,6 +9,7 @@ import {
   Title,
   SearchButton,
   Icon,
+  WeatherCards
 } from "./styles";
 
 export function HomeScreen(): JSX.Element {
@@ -20,7 +22,24 @@ export function HomeScreen(): JSX.Element {
         </SearchButton>
       </Header>
 
-      <EmptyState />
+      <WeatherCards>
+        <WeatherCard
+          title="Cortês"
+          country="Brasil"
+          temperature={{
+            highlight: "22°",
+            details: {
+              weather: "Nublado",
+              min: "16°",
+              max: "22°"
+            }
+          }}
+        />
+      </WeatherCards>
+
+      {/* <EmptyState /> */}
+
+      
 
     </Container>
   );
