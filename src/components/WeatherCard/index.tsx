@@ -5,7 +5,7 @@ import {
   Container,
   Header,
   Place,
-  Title,
+  City,
   Subtitle,
   Temperature,
   Footer,
@@ -15,20 +15,24 @@ import {
 } from "./styles";
 
 export function WeatherCard({
-  title,
+  city,
   country,
-  temperature = {}
+  temperature = {},
+  onPress,
+  ...rest
 }: WeatherCardProps): JSX.Element {
   return (
     <Container
-      style={{
-        elevation: 2,
-      }}
-      activeOpacity={0.7}
+    style={{
+      elevation: 2,
+    }}
+    activeOpacity={0.7}
+    onPress={onPress}
+    {...rest}
     >
       <Header>
         <Place>
-          <Title>{title}</Title>
+          <City>{city}</City>
           <Subtitle>{country}</Subtitle>
         </Place>
         {temperature.highlight && (

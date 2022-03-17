@@ -1,8 +1,6 @@
 import React from "react";
 import { WeatherCard } from "../../components/WeatherCard";
 
-import { EmptyState } from "./components/EmptyState";
-
 import {
   Container,
   Header,
@@ -13,6 +11,10 @@ import {
 } from "./styles";
 
 export function HomeScreen(): JSX.Element {
+  function handleWeatherCard() {
+    // TODO: Implement WeatherCard action
+  }
+
   return (
     <Container>
       <Header>
@@ -24,7 +26,7 @@ export function HomeScreen(): JSX.Element {
 
       <WeatherCards>
         <WeatherCard
-          title="Cortês"
+          city="Cortês"
           country="Brasil"
           temperature={{
             highlight: "22°",
@@ -34,13 +36,9 @@ export function HomeScreen(): JSX.Element {
               max: "22°"
             }
           }}
+          onPress={handleWeatherCard}
         />
       </WeatherCards>
-
-      {/* <EmptyState /> */}
-
-      
-
     </Container>
   );
 }

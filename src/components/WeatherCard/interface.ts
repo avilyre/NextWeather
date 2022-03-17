@@ -1,5 +1,7 @@
-export interface WeatherCardProps {
-  title: string;
+import { TouchableOpacityProps } from "react-native";
+
+export interface WeatherCardProps extends TouchableOpacityProps {
+  city: string;
   country: string;
   temperature?: {
     highlight?: string;

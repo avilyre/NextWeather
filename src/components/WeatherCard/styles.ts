@@ -20,7 +20,7 @@ export const Header = styled.View`
 export const Place = styled.View`
 `;
 
-export const Title = styled.Text`
+export const City = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(24)}px;
   color: ${({ theme }) => theme.colors.title};
