@@ -17,10 +17,9 @@ export const Header = styled.View`
   justify-content: space-between;
 `;
 
-export const Place = styled.View`
-`;
+export const HeaderInfo = styled.View``;
 
-export const City = styled.Text`
+export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: ${RFValue(24)}px;
   color: ${({ theme }) => theme.colors.title};

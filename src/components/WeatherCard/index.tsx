@@ -5,8 +5,8 @@ import { WeatherCardProps } from "./interface";
 import {
   Container,
   Header,
-  Place,
-  City,
+  HeaderInfo,
+  Title,
   Subtitle,
   Temperature,
   Footer,
@@ -16,8 +16,8 @@ import {
 } from "./styles";
 
 export function WeatherCard({
-  city,
-  country,
+  title,
+  subtitle,
   temperature = {},
   extraButton,
   onPress,
@@ -33,10 +33,10 @@ export function WeatherCard({
     {...rest}
     >
       <Header>
-        <Place>
-          <City>{city}</City>
-          <Subtitle>{country}</Subtitle>
-        </Place>
+        <HeaderInfo>
+          <Title>{title}</Title>
+          <Subtitle>{subtitle && subtitle}</Subtitle>
+        </HeaderInfo>
         {temperature.highlight && (
           <Temperature>{temperature.highlight}</Temperature>
         )}
@@ -46,7 +46,7 @@ export function WeatherCard({
           <Details>
             <Weather>{temperature.details.weather}</Weather>
             <MinMax>
-              {`${temperature.details.min} - ${temperature.details.max}`}
+              {temperature.details.min && temperature.details.max && `${temperature.details.min} - ${temperature.details.max}`}
             </MinMax>
           </Details>
         )}

@@ -1,8 +1,8 @@
 import { TouchableOpacityProps } from "react-native";
 
 export interface WeatherCardProps extends TouchableOpacityProps {
-  city: string;
-  country: string;
+  title: string;
+  subtitle?: string;
   temperature?: {
     highlight?: string;
     details?: {

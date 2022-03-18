@@ -1,26 +1,25 @@
 import React from "react";
 
 import { WeatherCard } from "../../../../components/WeatherCard";
-import { WeatherListDataProps, WeatherListProps } from "../WeatherList/interface";
 import { WeatherListItemProps } from "./interface";
 
 export function WeatherListItem({
-  city,
-  country,
+  title,
+  subtitle,
   temperature,
   extraButton,
   onPressItem
 }: WeatherListItemProps): JSX.Element {
   return (
     <WeatherCard
-      city={city}
-      country={country}
+      title={title}
+      subtitle={subtitle}
       temperature={{
-        highlight: temperature.highlight,
+        highlight: temperature?.highlight,
         details: {
-          weather: temperature.details.weather,
-          min: temperature.details.min,
-          max: temperature.details.max
+          weather: temperature?.details.weather,
+          min: temperature?.details.min,
+          max: temperature?.details.max
         }
       }}
       onPress={onPressItem}

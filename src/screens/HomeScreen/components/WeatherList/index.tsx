@@ -11,6 +11,7 @@ export function WeatherList({
 }: WeatherListProps): JSX.Element {
   return (
     <Container
+      keyExtractor={(item) => item.id}
       data={data}
       renderItem={({ item }) => (
           <WeatherListItem {...item} onPressItem={onPressItem} />

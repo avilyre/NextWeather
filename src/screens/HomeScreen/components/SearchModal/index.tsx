@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
 
 import { DescriptionRow, GooglePlaceData } from "react-native-google-places-autocomplete";
 
@@ -16,16 +16,26 @@ import {
   Title
 } from "./styles";
 
-import config from "../../../../config/index.json";
+import apiKeys from "../../../../config/apiKeys";
 import { WeatherCard } from "../../../../components/WeatherCard";
 import { RFValue } from "react-native-responsive-fontsize";
 import theme from "../../../../global/styles/theme";
+import { getForecast, getWeather } from "../../services/weatherService";
 
 export function SearchModal({
   dataList,
   onCancel,
   onPressItem
 }: SearchModalProps): JSX.Element {
+
+  async function handleCityCard(city:string) {
+    const weather = await getWeather(city);
+    const { lat, lon } = weather.data.coord;
+
+    const forecast = await getForecast(lat, lon);
+    console.log(JSON.stringify(forecast.data));
+  }
+
   return (
     <Container>
       <Header>
@@ -35,17 +45,14 @@ export function SearchModal({
         <Title>Procurar</Title>
       </Header>
       <Input
+        fetchDetails={true}
         placeholder='Procurar local'
-        onPress={(data, details = null) => {
-          // 'details' is provided when fetchDetails = true
-          console.log(data);
-        }}
         query={{
-          key: config.googleApi,
+          key: apiKeys.googleApi,
           language: 'pt-br',
         }}
+        
         enablePoweredByContainer={false}
-        fetchDetails={true}
         styles={{
           textInputContainer: {
             height: RFValue(50),
@@ -65,19 +72,19 @@ export function SearchModal({
             padding: 0,
           }
         }}
-        onFail={(result) => {
-          console.log(result)
-        }}
         renderRow={(data: GooglePlaceData) => {
-          console.log(JSON.stringify(data.structured_formatting.secondary_text));
-
           const city = data.structured_formatting.main_text;
           const country = data.structured_formatting.secondary_text;
 
           return (
             <WeatherCard
-              city={city}
-              country={country}
+              title={city}
+              subtitle={country}
+              onPress={onPressItem}
+              extraButton={{
+                title: "ADICIONAR",
+                onPress: () => {}
+              }}
             />
           );
         }}

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Modal } from "react-native";
-import { WeatherCardProps } from "../../components/WeatherCard/interface";
 import { weatherDataList } from "../../mocks/weatherDataList";
 import { EmptyState } from "./components/EmptyState";
+import { ForecastDetailsModal } from "./components/ForecastDetailsModal";
 import { SearchModal } from "./components/SearchModal";
 import { WeatherList } from "./components/WeatherList";
 import { WeatherListDataProps } from "./components/WeatherList/interface";
@@ -16,22 +16,22 @@ import {
 } from "./styles";
 
 export function HomeScreen(): JSX.Element {
-  const [weatherData, setWeatherData] = useState<WeatherListDataProps[]>();
+  const [weatherData, setWeatherData] = useState<WeatherListDataProps[]>(weatherDataList);
   const [isEnabledSearchPlace, setIsEnabledSearchPlace] = useState(false);
-
-  function handleWeatherCard() {
-    console.log("Puft!!");
-  }
+  const [isEnabledForecastDetailsModal, setIsEnabledForecastDetailsModal] = useState(false);
 
   function handleToggleSearchModal() {
     setIsEnabledSearchPlace(!isEnabledSearchPlace);
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      setWeatherData(weatherDataList);
-    }, 2000);
-  }, []);
+  function handleToggleForecastDetailsModal() {
+    setIsEnabledForecastDetailsModal(!isEnabledForecastDetailsModal);
+  }
+
+  function handleAddedCards() {
+    handleToggleForecastDetailsModal();
+  }
+
 
   return (
     <Container>
@@ -46,8 +46,8 @@ export function HomeScreen(): JSX.Element {
         ?
         (
           <WeatherList
-            data={weatherData}
-            onPressItem={handleWeatherCard}
+            data={weatherDataList}
+            onPressItem={handleAddedCards}
           />
         )
         : <EmptyState />
@@ -61,7 +61,17 @@ export function HomeScreen(): JSX.Element {
         <SearchModal
           dataList={weatherData}
           onCancel={handleToggleSearchModal}
-          onPressItem={handleWeatherCard}
+          onPressItem={handleToggleForecastDetailsModal}
+        />
+      </Modal>
+
+      <Modal
+        visible={isEnabledForecastDetailsModal}
+        onRequestClose={handleToggleForecastDetailsModal}
+        animationType="slide"
+      >
+        <ForecastDetailsModal
+          onCancel={handleToggleForecastDetailsModal}
         />
       </Modal>
     </Container>

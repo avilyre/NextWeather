@@ -29,14 +29,3 @@ export const Icon = styled(Feather)`
   color: ${({ theme }) => theme.colors.shape};
 `;
 
-export const Input = styled( GooglePlacesAutocomplete)`
-  flex: 1;
-
-  font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: ${RFValue(16)}px;
-  color: ${({ theme }) => theme.colors.shape_light};
-  
-  padding: 10px 15px;
-  border-radius: 5px;
-`;
-
