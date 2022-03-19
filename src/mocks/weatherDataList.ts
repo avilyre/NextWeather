@@ -3,8 +3,8 @@ export const weatherDataList = [
     id: "1",
     title: "Cortês",
     subtitle: "Brasil",
+    highlight: "16°",
     temperature: {
-      highlight: "16°",
       details: {
         weather: "Chuvoso",
         min: "12°",

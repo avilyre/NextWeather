@@ -6,6 +6,7 @@ import { WeatherListItemProps } from "./interface";
 export function WeatherListItem({
   title,
   subtitle,
+  highlight,
   temperature,
   extraButton,
   onPressItem
@@ -14,8 +15,8 @@ export function WeatherListItem({
     <WeatherCard
       title={title}
       subtitle={subtitle}
+      highlight={highlight}
       temperature={{
-        highlight: temperature?.highlight,
         details: {
           weather: temperature?.details.weather,
           min: temperature?.details.min,

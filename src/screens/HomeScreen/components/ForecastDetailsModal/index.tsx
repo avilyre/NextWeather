@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { WeatherCardProps } from "../../../../components/WeatherCard/interface";
 import { weatherDataList } from "../../../../mocks/weatherDataList";
+import { generateId } from "../../../../utils/generateId";
 import { getForecast, getForecastData, getWeather } from "../../services/weatherService";
 import { WeatherList } from "../WeatherList";
 import { WeatherListDataProps } from "../WeatherList/interface";
@@ -24,8 +25,14 @@ export function ForecastDetailsModal({
   useEffect(() => {
     getForecastData(city)
     .then(res => {
-      console.log(res);
-      setForecastData(res);
+      setForecastData(res.map(item => {
+        const updatedItem = {
+          ...item,
+          id: generateId()
+        }
+
+        return updatedItem;
+      }));
     });
   }, []);
 

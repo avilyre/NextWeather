@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-native";
+import { useUser } from "../../hooks/useUser";
 import { weatherDataList } from "../../mocks/weatherDataList";
 import { EmptyState } from "./components/EmptyState";
 import { ForecastDetailsModal } from "./components/ForecastDetailsModal";
@@ -16,9 +17,9 @@ import {
 } from "./styles";
 
 export function HomeScreen(): JSX.Element {
-  const [weatherData, setWeatherData] = useState<WeatherListDataProps[]>(weatherDataList);
   const [isEnabledSearchPlace, setIsEnabledSearchPlace] = useState(false);
   const [isEnabledForecastDetailsModal, setIsEnabledForecastDetailsModal] = useState(false);
+  const { places, removePlace } = useUser();
 
   function handleToggleSearchModal() {
     setIsEnabledSearchPlace(!isEnabledSearchPlace);
@@ -32,6 +33,10 @@ export function HomeScreen(): JSX.Element {
     handleToggleForecastDetailsModal();
   }
 
+  function handleRemovePlace(id: string) {
+    removePlace(id);
+  }
+
 
   return (
     <Container>
@@ -42,11 +47,23 @@ export function HomeScreen(): JSX.Element {
         </SearchButton>
       </Header>
 
-      {weatherData
+      {places.length !== 0
         ?
         (
           <WeatherList
-            data={weatherDataList}
+            data={places.map((item) => {
+              const updatedItem = {
+                ...item,
+                extraButton: {
+                  title: "Remover",
+                  onPress: () => {
+                    handleRemovePlace(item.id);
+                  }
+                }
+              }
+
+              return updatedItem;
+            })}
             onPressItem={handleAddedCards}
           />
         )
@@ -59,7 +76,6 @@ export function HomeScreen(): JSX.Element {
         animationType="slide"
       >
         <SearchModal
-          dataList={weatherData}
           onCancel={handleToggleSearchModal}
           onPressItem={handleToggleForecastDetailsModal}
         />

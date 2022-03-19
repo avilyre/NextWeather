@@ -9,5 +9,5 @@ export enum WeekDays {
   "Quarta-feira",
   "Quinta-feira",
   "Sexta-feira",
-  "Sábado-feira",
+  "Sábado",
 }

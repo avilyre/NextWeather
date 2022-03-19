@@ -18,6 +18,7 @@ import {
 export function WeatherCard({
   title,
   subtitle,
+  highlight,
   temperature = {},
   extraButton,
   onPress,
@@ -37,8 +38,8 @@ export function WeatherCard({
           <Title>{title}</Title>
           <Subtitle>{subtitle && subtitle}</Subtitle>
         </HeaderInfo>
-        {temperature.highlight && (
-          <Temperature>{temperature.highlight}</Temperature>
+        {highlight && (
+          <Temperature>{highlight}</Temperature>
         )}
       </Header>
       <Footer>
