@@ -1,5 +1,4 @@
 import React from "react";
-import { WeatherCard } from "../../../../components/WeatherCard";
 import { WeatherListItem } from "../WeatherListItem";
 import { WeatherListProps } from "./interface";
 

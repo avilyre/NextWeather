@@ -1,4 +1,5 @@
 export enum ScreensName {
   HomeScreen = "HomeScreen",
-  ForecastDetails = "ForecastDetails",
+  SearchScreen = "SearchScreen",
+  ForecastDetails = "ForecastDetailsScreen",
 }

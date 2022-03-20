@@ -1,4 +1,4 @@
-import { WeatherCardProps } from "../../../../components/WeatherCard/interface";
+import { WeatherCardProps } from "../WeatherCard/interface";
 
 export interface WeatherListDataProps extends WeatherCardProps {
   id: string

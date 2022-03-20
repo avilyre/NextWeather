@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Modal } from "react-native";
 
 import { useUser } from "../../hooks/useUser";
 import { ScreensName } from "../../routes/interface";
 import { EmptyState } from "./components/EmptyState";
-import { SearchModal } from "./components/SearchModal";
-import { WeatherList } from "./components/WeatherList";
+import { WeatherList } from "../../components/WeatherList";
 
 import {
   Container,
@@ -19,8 +17,8 @@ export function HomeScreen({ navigation }): JSX.Element {
   const [isEnabledSearchPlace, setIsEnabledSearchPlace] = useState(false);
   const { places, removePlace } = useUser();
 
-  function handleToggleSearchModal() {
-    setIsEnabledSearchPlace(!isEnabledSearchPlace);
+  function handleSearchScreen() {
+    navigation.navigate(ScreensName.SearchScreen);
   }
 
 
@@ -37,7 +35,7 @@ export function HomeScreen({ navigation }): JSX.Element {
     <Container>
       <Header>
         <Title>Cidades</Title>
-        <SearchButton onPress={handleToggleSearchModal}>
+        <SearchButton onPress={handleSearchScreen}>
           <Icon name="search" />
         </SearchButton>
       </Header>
@@ -64,21 +62,6 @@ export function HomeScreen({ navigation }): JSX.Element {
         )
         : <EmptyState />
       }
-
-      <Modal
-        visible={isEnabledSearchPlace}
-        onRequestClose={handleToggleSearchModal}
-        animationType="slide"
-      >
-        <SearchModal
-          onCancel={handleToggleSearchModal}
-          onPressItem={() => {
-            navigation.navigate(ScreensName.ForecastDetails, {
-              place: "new york"
-            });
-          }}
-        />
-      </Modal>
     </Container>
   );
 }

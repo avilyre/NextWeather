@@ -1,11 +1,7 @@
 import React from "react";
-import { Alert, Text, ToastAndroid } from "react-native";
+import { ToastAndroid } from "react-native";
 
-import { DescriptionRow, GooglePlaceData } from "react-native-google-places-autocomplete";
-
-import { WeatherList } from "../WeatherList";
-import { EmptyState } from "./components/EmptyState";
-import { SearchModalProps } from "./interface";
+import { GooglePlaceData } from "react-native-google-places-autocomplete";
 
 import {
   Container,
@@ -16,17 +12,15 @@ import {
   Title
 } from "./styles";
 
-import apiKeys from "../../../../config/apiKeys";
-import { WeatherCard } from "../../../../components/WeatherCard";
+import apiKeys from "../../config/apiKeys";
+import { WeatherCard } from "../../components/WeatherCard";
 import { RFValue } from "react-native-responsive-fontsize";
-import theme from "../../../../global/styles/theme";
-import { getForecast, getWeather } from "../../../../services/weatherService";
-import { useUser } from "../../../../hooks/useUser";
+import theme from "../../global/styles/theme";
+import { getForecast, getWeather } from "../../services/weatherService";
+import { useUser } from "../../hooks/useUser";
+import { ScreensName } from "../../routes/interface";
 
-export function SearchModal({
-  onCancel,
-  onPressItem
-}: SearchModalProps): JSX.Element {
+export function SearchScreen({ navigation }): JSX.Element {
   const { addPlace } = useUser();
 
   async function getPlaceInformation(city:string) {
@@ -53,10 +47,16 @@ export function SearchModal({
     })
   }
 
+  function handleForecastDetailsScreen(place: string) {
+    navigation.navigate(ScreensName.ForecastDetails, {
+      place
+    });
+  }
+
   return (
     <Container>
       <Header>
-        <ButtonIcon onPress={onCancel}>
+        <ButtonIcon onPress={navigation.goBack}>
           <Icon name="chevron-left" />
         </ButtonIcon>
         <Title>Procurar</Title>
@@ -97,7 +97,7 @@ export function SearchModal({
             <WeatherCard
               title={city}
               subtitle={country}
-              onPress={onPressItem}
+              onPress={() => handleForecastDetailsScreen(city)}
               extraButton={{
                 title: "ADICIONAR",
                 onPress: () => handleCityCard(city, country)

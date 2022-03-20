@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { HomeScreen } from "../screens/HomeScreen";
 import { ForecastDetailsScreen } from "../screens/ForecastDetails";
+import { SearchScreen } from "../screens/SearchScreen";
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -20,9 +21,15 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="ForecastDetails"
+        name="SearchScreen"
+        component={SearchScreen}
+      />
+
+      <Screen
+        name="ForecastDetailsScreen"
         component={ForecastDetailsScreen}
       />
+      
     </Navigator>
   )
 }
