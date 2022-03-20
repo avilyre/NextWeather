@@ -9,7 +9,7 @@ export async function getWeather(city:string) {
 }
 
 export async function getForecast(lat:string, lon:string) {
-  return await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&appid=${apiKeys.openWeatherApi}&units=metric&lang=pt_b`);
+  return await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=7&appid=${apiKeys.openWeatherApi}&units=metric&lang=pt_br`);
 }
 
 export async function getForecastData(city:string) {
@@ -24,7 +24,7 @@ export async function getForecastData(city:string) {
       highlight: `${item.main.temp}°`,
       temperature: {
         details: {
-          weather: item.weather.description,
+          weather: item.weather[0].description,
           min: `${item.main.temp_min}°`,
           max: `${item.main.temp_max}°`
         }

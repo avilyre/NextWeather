@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Container, Title, Subtitle } from "./styles";
+import { Container, LoadingActivity } from "./styles";
 
 export function EmptyState(): JSX.Element {
   return (
     <Container>
-      <Title>Carregando</Title>
+      <LoadingActivity />
     </Container>
   );
 }

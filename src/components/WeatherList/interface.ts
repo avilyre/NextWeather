@@ -6,5 +6,4 @@ export interface WeatherListDataProps extends WeatherCardProps {
 
 export interface WeatherListProps {
   data: WeatherListDataProps[]
-  onPressItem(): void;
 }

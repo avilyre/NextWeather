@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ScreensName } from "../../routes/interface";
 
 import { generateId } from "../../utils/generateId";
 import { WeatherList } from "../../components/WeatherList";
@@ -43,10 +42,7 @@ export function ForecastDetailsScreen({ route, navigation }): JSX.Element {
 
       {forecastData.length !== 0
       ? (
-        <WeatherList
-          data={forecastData}
-          onPressItem={() => {}}
-        />
+        <WeatherList data={forecastData} />
       )
       : <EmptyState />}
     </Container>

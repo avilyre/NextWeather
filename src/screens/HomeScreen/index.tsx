@@ -14,18 +14,12 @@ import {
 } from "./styles";
 
 export function HomeScreen({ navigation }): JSX.Element {
-  const [isEnabledSearchPlace, setIsEnabledSearchPlace] = useState(false);
   const { places, removePlace } = useUser();
 
   function handleSearchScreen() {
     navigation.navigate(ScreensName.SearchScreen);
   }
 
-
-  function handleAddedCards() {
-    // TODO
-    // navigation.navigate(ScreensName.SearchScreen);
-  }
 
   function handleRemovePlace(id: string) {
     removePlace(id);
@@ -55,10 +49,8 @@ export function HomeScreen({ navigation }): JSX.Element {
                   }
                 }
               }
-
               return updatedItem;
             })}
-            onPressItem={handleAddedCards}
           />
         )
         : <EmptyState />
