@@ -24,6 +24,7 @@ export function HomeScreen({ navigation }): JSX.Element {
 
   function handleAddedCards() {
     // TODO
+    // navigation.navigate(ScreensName.SearchScreen);
   }
 
   function handleRemovePlace(id: string) {

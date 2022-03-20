@@ -1,4 +1,4 @@
-import { TouchableOpacityProps } from "react-native";
+import { GestureResponderEvent, TouchableOpacityProps } from "react-native";
 
 export interface WeatherCardProps extends TouchableOpacityProps {
   title: string;

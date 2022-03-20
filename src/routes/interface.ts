@@ -3,3 +3,11 @@ export enum ScreensName {
   SearchScreen = "SearchScreen",
   ForecastDetails = "ForecastDetailsScreen",
 }
+
+export type AppRoutesParams = {
+  HomeScreen: {};
+  ForecastDetailsScreen: {
+    place: string;
+  }
+  SearchScreen: {};
+}
