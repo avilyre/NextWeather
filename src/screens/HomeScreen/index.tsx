@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Modal } from "react-native";
+
 import { useUser } from "../../hooks/useUser";
-import { weatherDataList } from "../../mocks/weatherDataList";
+import { ScreensName } from "../../routes/interface";
 import { EmptyState } from "./components/EmptyState";
-import { ForecastDetailsModal } from "./components/ForecastDetailsModal";
 import { SearchModal } from "./components/SearchModal";
 import { WeatherList } from "./components/WeatherList";
-import { WeatherListDataProps } from "./components/WeatherList/interface";
 
 import {
   Container,
@@ -16,21 +15,17 @@ import {
   Icon,
 } from "./styles";
 
-export function HomeScreen(): JSX.Element {
+export function HomeScreen({ navigation }): JSX.Element {
   const [isEnabledSearchPlace, setIsEnabledSearchPlace] = useState(false);
-  const [isEnabledForecastDetailsModal, setIsEnabledForecastDetailsModal] = useState(false);
   const { places, removePlace } = useUser();
 
   function handleToggleSearchModal() {
     setIsEnabledSearchPlace(!isEnabledSearchPlace);
   }
 
-  function handleToggleForecastDetailsModal() {
-    setIsEnabledForecastDetailsModal(!isEnabledForecastDetailsModal);
-  }
 
   function handleAddedCards() {
-    handleToggleForecastDetailsModal();
+    // TODO
   }
 
   function handleRemovePlace(id: string) {
@@ -77,17 +72,11 @@ export function HomeScreen(): JSX.Element {
       >
         <SearchModal
           onCancel={handleToggleSearchModal}
-          onPressItem={handleToggleForecastDetailsModal}
-        />
-      </Modal>
-
-      <Modal
-        visible={isEnabledForecastDetailsModal}
-        onRequestClose={handleToggleForecastDetailsModal}
-        animationType="slide"
-      >
-        <ForecastDetailsModal
-          onCancel={handleToggleForecastDetailsModal}
+          onPressItem={() => {
+            navigation.navigate(ScreensName.ForecastDetails, {
+              place: "new york"
+            });
+          }}
         />
       </Modal>
     </Container>

@@ -1,8 +1,8 @@
 import axios from "axios";
-import { WeatherCardProps } from "../../../components/WeatherCard/interface";
+import { WeatherCardProps } from "../components/WeatherCard/interface";
 
-import apiKeys from "../../../config/apiKeys";
-import { WeekDays } from "../components/ForecastDetailsModal/interface";
+import apiKeys from "../config/apiKeys";
+import { WeekDays } from "../screens/ForecastDetails/interface";
 
 export async function getWeather(city:string) {
   return await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKeys.openWeatherApi}&units=metric&lang=pt_br`);

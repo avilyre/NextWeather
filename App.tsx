@@ -13,6 +13,8 @@ import AppLoading from 'expo-app-loading';
 import { ScreenContainer } from './src/components/ScreenContainer';
 import { StatusBar } from 'expo-status-bar';
 import { UserContextProvider } from './src/hooks/useUser';
+import { NavigationContainer } from '@react-navigation/native';
+import { AppRoutes } from './src/routes/app.routes';
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
@@ -26,15 +28,17 @@ export default function App(): JSX.Element {
 
   return (
     <ThemeProvider theme={theme}>
-      <UserContextProvider>
-        <ScreenContainer>
-          <StatusBar
-            style='light'
-            backgroundColor={theme.colors.primary}
-          />
-          <HomeScreen />
-        </ScreenContainer>
-      </UserContextProvider>
+      <NavigationContainer>
+        <UserContextProvider>
+          <ScreenContainer>
+            <StatusBar
+              style='light'
+              backgroundColor={theme.colors.primary}
+            />
+            <AppRoutes />
+          </ScreenContainer>
+        </UserContextProvider>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }

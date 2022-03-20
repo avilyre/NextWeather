@@ -1,7 +1,3 @@
-export interface ForecastDetailsModalProps {
-  onCancel(): void;
-}
-
 export enum WeekDays {
   "Domingo",
   "Segunda-feira",

@@ -20,7 +20,7 @@ import apiKeys from "../../../../config/apiKeys";
 import { WeatherCard } from "../../../../components/WeatherCard";
 import { RFValue } from "react-native-responsive-fontsize";
 import theme from "../../../../global/styles/theme";
-import { getForecast, getWeather } from "../../services/weatherService";
+import { getForecast, getWeather } from "../../../../services/weatherService";
 import { useUser } from "../../../../hooks/useUser";
 
 export function SearchModal({

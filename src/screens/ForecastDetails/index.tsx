@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { WeatherCardProps } from "../../../../components/WeatherCard/interface";
-import { weatherDataList } from "../../../../mocks/weatherDataList";
-import { generateId } from "../../../../utils/generateId";
-import { getForecast, getForecastData, getWeather } from "../../services/weatherService";
-import { WeatherList } from "../WeatherList";
-import { WeatherListDataProps } from "../WeatherList/interface";
+import { ScreensName } from "../../routes/interface";
+
+import { generateId } from "../../utils/generateId";
+import { WeatherList } from "../HomeScreen/components/WeatherList";
+import { getForecastData } from "../../services/weatherService";
 import { EmptyState } from "./components/EmptyState";
-import { ForecastDetailsModalProps } from "./interface";
 
 import {
   Container,
@@ -16,10 +14,8 @@ import {
   Title
 } from "./styles";
 
-export function ForecastDetailsModal({
-  onCancel
-}: ForecastDetailsModalProps): JSX.Element {
-  const [city, setCity] = useState("Cortês");
+export function ForecastDetailsScreen({ route, navigation }): JSX.Element {
+  const [city, setCity] = useState(route.params.place);
   const [forecastData, setForecastData] = useState([]);
 
   useEffect(() => {
@@ -39,7 +35,10 @@ export function ForecastDetailsModal({
   return (
     <Container>
       <Header>
-        <ButtonIcon onPress={onCancel}>
+        <ButtonIcon onPress={() => {
+          // the goBack() function was not used due to some reason causing freezing on the screen
+          navigation.navigate(ScreensName.HomeScreen);
+        }}>
           <Icon name="chevron-left" />
         </ButtonIcon>
         <Title>{city}</Title>
