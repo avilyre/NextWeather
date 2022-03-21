@@ -21,7 +21,7 @@ Sabe aquele momento que vocë precisa saber o clima de amanhã para planejar seu
 - *:fire: OpenWeather API*
 
 - *:fire: Styled Components*
-- 
+
 ### :computer: A Aplicação
 <img src="https://github.com/avilysva/avilysva/blob/master/projects-images/nextweather/cover.png" />
 
