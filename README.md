@@ -42,7 +42,7 @@ Logo após clonar é importante que instale as dependências necessárias com os
 Feito isso basta agora executar a aplicação seguindo os comandos abaixo:
 
 ```
- expo start // para iniciar e poder visualizar através de um Explo client em seu dispositivo fisico
+ expo start // para iniciar e poder visualizar através de um Expo client em seu dispositivo fisico
 ```
 ```
 yarn android // para iniciar o emulador android em sua máquina
