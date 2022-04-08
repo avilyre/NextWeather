@@ -9,8 +9,6 @@ Sabe aquele momento que vocë precisa saber o clima de amanhã para planejar seu
 - *:pencil: Adicionar locais a sua lista inicial*
 - *:pencil: Remover locais da sua lista inicial*
 - *:pencil: Ver previsão através da sua lista inicial*
-- *:x: Dados da lista inicial persistidos* (Em implementação)
-- *:x: Favoritar locais* (Em implementação)
 
 ### :hammer_and_pick: Tecnologias
 
